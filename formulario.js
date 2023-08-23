@@ -1,18 +1,28 @@
+//Se revisa funcionamiento de codigo, carga el html pero noacepta valores en el formulario
+
+
 var formulario = document.querySelector("#form")
 
-formulario.onsubmit = function(e) {
 
-  e.prevent();
-  
+
+formulario.onsubmit = function(event) {
+  // la e del parametro de la función la renombraré para que no se confunda con la e que se usa mas abajo para la edad
+
+  // le falta el "Default" al método prevent
+  event.preventDefault();
+  // se esta creando un arreglo con los elementos del formulario
   var n = formulario.elements[0]
   var e = formulario.elements[1]
   var na = formulario.elements[2]
-
+//asigna el valor del nombre al elemento n del formulario
+//asigna edad al valor e del comentario
   var nombre = n.value
   var edad = e.value
-
+// asigna a i el indice seleccionado en el dropdown del formulario
+// despues usa i para seleccionar la opcion del index y lo asigna a la variable nacionalidad
   var i = na.selectedIndex
   var nacionalidad = na.options[i].value
+// se imprimen los datos
   console.log(nombre, edad)
   console.log(nacionalidad)
 
@@ -55,7 +65,8 @@ function agregarInvitado(nombre, edad, nacionalidad) {
 var lista = document.getElementById("lista-de-invitados")
 
 var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
+//cambié added por add
+elementoLista.classList.add("elemento-lista")
 lista.appendChild(elementoLista)
 
 var spanNombre = document.createElement("span")
